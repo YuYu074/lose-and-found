@@ -1,0 +1,28 @@
+<view class="body">
+    <view class="login">
+        <view class="info" >
+            <image class="avatarUrl" src="{{ avatarUrl }}"></image>
+            <text wx:if="{{nickName}}" class="nickName">{{ nickName }}</text>
+            <button wx:else class="unlogin-btn" open-type="getUserInfo" bindtap="toLogin">获取微信头像、昵称</button>
+        </view>
+        <view class="cell-body">
+            <view class="cell-list">
+                <view 
+                    class="cell" 
+                    wx:for="{{ cellList }}" 
+                    wx:key="index"
+                    data-page="{{ item.page }}"
+                    bindtap="toDetail"
+                >
+                    <view class="cell-left">
+                        <image class="cell-left-image" src="{{ item.url }}"></image>
+                        <text class="cell-left-text">{{ item.text }}</text>
+                    </view>
+                    <view class="cell-right">
+                        <image class="cell-right-image" src="../../images/dayu.png"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
