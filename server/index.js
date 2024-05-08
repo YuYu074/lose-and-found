@@ -34,9 +34,9 @@ app.post("/publish", async (req, res) => {
     // 1. 获取前端传过来的数据, 
     // 2. 将数据存入Lose数据表里
     try {
-        const { type, classify1, classify2, name, date, region, phone, desc, imgList, time, openid } = req.body;
+        const { type, classify1, classify2, name, date, region, regionName, phone, desc, imgList, time, openid } = req.body;
         await Lose.create({
-            type, classify1, classify2, name, date, region, phone, desc, imgList, time, openid
+            type, classify1, classify2, name, date, region, regionName, phone, desc, imgList, time, openid
         });
         let similarData = await Lose.find({
             type: type === 0 ? 1 : 0,
@@ -225,10 +225,10 @@ app.post("/deleteLose", async (req, res) => {
 
 // 小程序端修改寻物或寻主数据
 app.post("/updateLose", async (req, res) => {
-    const { type, classify1, classify2, name, date, region, phone, desc, imgList, time, openid, id } = req.body;
+    const { type, classify1, classify2, name, date, region,regionName, phone, desc, imgList, time, openid, id } = req.body;
     try {
         await Lose.findByIdAndUpdate(id, {
-            type, classify1, classify2, name, date, region, phone, desc, imgList, time, openid,
+            type, classify1, classify2, name, date, region,regionName, phone, desc, imgList, time, openid,
         })
         let similarData = await Lose.find({
             type: type === 0 ? 1 : 0,

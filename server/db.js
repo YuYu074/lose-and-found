@@ -32,6 +32,9 @@ const LoseSchema = new mongoose.Schema({
     region: {           // 丢失/拾取地点
         type: String
     },
+    regionName: {       //  地点名称
+        type: String,
+    },
     phone: {            // 联系方式
         type: String
     },

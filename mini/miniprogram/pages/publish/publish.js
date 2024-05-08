@@ -66,6 +66,7 @@ Page({
       name,
       date,
       region,
+      regionName,
       phone,
       desc,
       imgList,
@@ -116,6 +117,7 @@ Page({
         name,
         date,
         region,
+        regionName,
         phone,
         desc,
         imgList,
@@ -174,6 +176,7 @@ Page({
         name,
         date,
         region,
+        regionName,
         phone,
         desc,
         imgList,
@@ -185,14 +188,33 @@ Page({
         data
       } = result;
 
-      if (data === "success") {
+      if (data.msg === "success") {
         wx.switchTab({
           url: '../index/index',
           success: () => {
-            wx.showToast({
-              icon: 'none',
-              title: '发布成功!',
-            })
+            if(data.data.length > 0) {
+                wx.showModal({
+                  title: '提示',
+                  content: '匹配到有相似物品，是否前往查看',
+                  complete: (res) => {
+                    if (res.cancel) return
+                    if (res.confirm) {
+                      console.log("1",params);
+                      let cur = JSON.stringify(params)
+                      let _list = JSON.stringify(data.data)
+                      console.log("2", cur, _list);
+                      wx.navigateTo({
+                        url: `../metaData/metaData?cur=${cur}&list=${_list}`,
+                      })
+                    }
+                  }
+                })
+              }else {
+                wx.showToast({
+                  icon: 'none',
+                  title: '修改成功!',
+                })
+              }
           }
         })
       } else {
@@ -270,6 +292,7 @@ Page({
                 path
               } = JSON.parse(data)[0];
               console.log(path);
+              path = path.replaceAll('\\','/')
               let _path = `http://localhost:3001/${path}`;
               console.log(_path);
               imgList.unshift(_path);
@@ -290,7 +313,7 @@ Page({
   },
 
   getName(e) {
-    console.log(e.detail.value)
+    // console.log(e.detail.value)
     this.setData({
       name: e.detail.value,
       name_check: false

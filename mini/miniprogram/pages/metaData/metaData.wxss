@@ -1,1 +1,7 @@
 /* pages/metaData/metaData.wxss */
+.canvas {
+    border: 1px solid #000;
+    position: fixed;
+    top:-100%;
+    transform: translateY(-300%);
+}

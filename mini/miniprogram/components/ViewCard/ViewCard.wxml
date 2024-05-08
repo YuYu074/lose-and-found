@@ -6,7 +6,7 @@
             <text class="region">{{ data.regionName }}</text>
             <text class="date">{{ data.date }}</text>
             <text class="desc">{{ data.desc }}</text>
-            <text class="publish-time">{{ data.time }}</text>
+            <text class="publish-time">{{ time }}</text>
         </view>
     </view>
     <view class="handle-btn" wx:if="{{ handle }}">
@@ -14,6 +14,9 @@
             <button class="update-btn" size="mini" type="primary" data-info="{{ data }}" catchtap="toUpdate">修改</button>
             <button class="delete-btn" size="mini" type="warn" data-id="{{ data._id }}" catchtap="toDelete">删除</button>
         </view>
+    </view>
+    <view class="handle-btn" wx:if="{{ showsimilar }}">
+        相似度为：{{similar}}%
     </view>
     <view class="mask" wx:if="{{ data.state === 2 }}">
         已认领

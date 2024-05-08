@@ -1,10 +1,7 @@
 <view class="body">
-    <view class="lose-list" wx:if="{{list.length > 0}}">
-        <ViewCard wx:for="{{ list }}" wx:key="index" data="{{ item }}" bindtap="toDetail" data-info="{{ item }}" handle="{{ true }}" bindgetdelete="getDelete" bindgetupdate="getUpdate"  />
+    <view class="lose-list">
+        <ViewCard wx:for="{{ list }}" wx:key="index" data="{{ item }}" bindtap="toDetail" data-info="{{ item }}" showsimilar="{{ true }}" similar="{{item.similar}}" />
+        <canvas type="2d" id="canvas1" class="canvas"></canvas>
+        <canvas type="2d" id="canvas2" class="canvas"></canvas>
     </view>
-    
-    <view wx:else style="margin: 30px; color: #aaa; text-align: center;">
-      -- 暂无数据 --
-    </view>
-
 </view>
