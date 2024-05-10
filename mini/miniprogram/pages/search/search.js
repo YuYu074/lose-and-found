@@ -65,6 +65,7 @@ Page({
                 search: e.detail.value
             });
             let searchLog = wx.getStorageSync('searchLog');
+            searchLog = searchLog.filter(i => i != '')
             if (searchLog) {
                 // 缓存有值的时候
                 searchLog.unshift(e.detail.value);
@@ -72,9 +73,9 @@ Page({
                 // 没有缓存的时候
                 searchLog = [e.detail.value];
             }
-            wx.setStorageSync('searchLog', searchLog);
+            wx.setStorageSync('searchLog', searchLog.filter(i => i != ''));
             this.setData({
-                searchLog
+                searchLog: searchLog.filter(i => i != '')
             })
             const params = {
                 name: e.detail.value
