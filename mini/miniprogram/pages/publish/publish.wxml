@@ -51,15 +51,15 @@
         </view>
         <view class="upload">
             <view class="upload-top">
-                <text>最多选择6张图片</text>
-                <text>{{ imgList.length }}/6</text>
+                <text>请上传图片</text>
+                <!-- <text>{{ imgList.length }}/6</text> -->
             </view>
             <view class="upload-list">
                 <view class="img-list" wx:for="{{ imgList }}" wx:key="index">
                     <image class="common" src="{{ item }}"></image>
                     <image bindtap="deleteImg" data-index="{{ index }}" class="delete" src="../../images/close1.png"></image>
                 </view>
-                <image wx:if="{{ imgList.length < 6 }}" class="default" src="../../images/upload.png" bindtap="uploadImg"></image>
+                <image wx:if="{{ imgList.length < 1 }}" class="default" src="../../images/upload.png" bindtap="uploadImg"></image>
 
             </view>
         </view>
