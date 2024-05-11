@@ -258,24 +258,29 @@ app.post("/getDetail", async (req, res) => {
 app.post("/admin/login", async (req, res) => {
     console.log('enter admin login');
     const { username, password } = req.body;
-    const result = {
+    const ress = {
         username: 'admin',
         password: 'admin',
         create_time: new Date().getTime(),
         role: 0,
         nickname: 'test超级管理员'
     }
-    // const result = await Admin.findOne({
-    //     username
-    // })
-
-    // if (result && result.password === password) {
     if (username === 'admin' && password === 'admin') {
         // 登录成功
-        res.send(result);
+        res.send(ress);
     } else {
-        res.send("error");
+        const result = await Admin.findOne({
+            username
+        })
+        console.log(result);
+        if (result && result.password === password) {
+            res.send(result)
+        } else {
+            res.send("error");
+        }
     }
+    
+    
 })
 
 // 寻主/寻物数据

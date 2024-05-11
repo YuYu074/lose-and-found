@@ -7,7 +7,7 @@
       <el-table-column prop="classify2" label="二级分类"> </el-table-column>
       <el-table-column prop="name" label="名字"> </el-table-column>
       <el-table-column prop="date" label="丢失时间"> </el-table-column>
-      <el-table-column prop="region" label="丢失地点"> </el-table-column>
+      <el-table-column prop="regionName" label="丢失地点"> </el-table-column>
       <el-table-column prop="phone" label="联系方式"> </el-table-column>
       <el-table-column prop="desc" label="描述"> </el-table-column>
       <el-table-column prop="state" label="认领状态">
