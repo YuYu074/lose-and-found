@@ -32,6 +32,7 @@ Page({
                     success: (res) => {
                         const { data } = res;
                         let { path } = JSON.parse(data)[0];
+                        path = path.replaceAll('\\', '/')
                         let _path = `http://localhost:3001/${path}`;
                         console.log(_path);
                         this.setData({
